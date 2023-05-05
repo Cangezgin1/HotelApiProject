@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HotelProject.BusinessLayer.Abstract;
+using HotelProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,34 +13,47 @@ namespace HotelProject.WebApi.Controllers
     [ApiController]
     public class RoomController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult RoomList() // Tüm room ların gelmesi için
+        private readonly IRoomService _roomService;
+
+        public RoomController(IRoomService RoomService)
         {
-            return Ok();
+            _roomService = RoomService;
+        }
+
+        [HttpGet]
+        public IActionResult RoomList() // Tüm Room ların gelmesi için
+        {
+            var values = _roomService.TGetList();
+            return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddRoom() // Room eklemek için
+        public IActionResult AddRoom(Room room) // Room eklemek için
         {
+            _roomService.TInsert(room);
             return Ok();
         }
 
         [HttpDelete]
-        public IActionResult DeleteRoom() // Room silmek için
+        public IActionResult DeleteRoom(int id) // Room silmek için
         {
+            var values = _roomService.TGetById(id);
+            _roomService.TDelete(values);
             return Ok();
         }
 
         [HttpPut]
-        public IActionResult UpdateRoom() // Room güncelleme için
+        public IActionResult UpdateRoom(Room room) // Room güncelleme için
         {
+            _roomService.TUpdate(room);
             return Ok();
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetRoom() // id'ye göre room getirmek için
+        public IActionResult GetRoom(int id) // id'ye göre Room getirmek için
         {
-            return Ok();
+            var values = _roomService.TGetById(id);
+            return Ok(values);
         }
 
     }
