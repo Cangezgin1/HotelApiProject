@@ -19,7 +19,7 @@ namespace HotelProject.WebUI.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {
+        { 
             var client = _httpClientFactory.CreateClient();  // İstemci oluşturduk
             var responseMessage = await client.GetAsync("http://localhost:57222/api/Staff"); // İstekte bulunduğum adres
             if (responseMessage.IsSuccessStatusCode) // başarılı durum kodu dönerse
