@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Controllers
 {
-    public class StaffController : Controller
+    public class StaffController : Controller 
     {
 
         private readonly IHttpClientFactory _httpClientFactory; // IHttpClientFactory örneği, uygulamanın diğer web hizmetlerine (API'ler veya diğer web siteleri gibi) HTTP isteklerinde bulunmasını sağlar.
