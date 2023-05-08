@@ -30,7 +30,7 @@ namespace HotelProject.WebUI.Controllers
             }
             return View();
         }
-        // a
+        
         [HttpGet]
         public IActionResult AddStaff() 
         {
@@ -40,9 +40,9 @@ namespace HotelProject.WebUI.Controllers
         public async Task<IActionResult> AddStaff(AddStaffViewModel model)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(model);
-            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json");
-            var responseMessage = await client.PostAsync("http://localhost:57222/api/Staff",stringContent);
+            var jsonData = JsonConvert.SerializeObject(model); // Modeli json formatına dönüştürüyoruz.
+            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json"); // Bu satır, jsonData dizesini UTF-8 kodlamasında bir JSON içeriği olarak temsil eden bir StringContent nesnesi oluşturur. Bu nesne, HTTP isteği mesaj gövdesi olarak kullanılabilir.
+            var responseMessage = await client.PostAsync("http://localhost:57222/api/Staff",stringContent); // 
             if (responseMessage.IsSuccessStatusCode)
                 return RedirectToAction("Index");
             return View();
