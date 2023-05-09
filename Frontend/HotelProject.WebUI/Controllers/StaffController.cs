@@ -18,8 +18,12 @@ namespace HotelProject.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+
+
+        #region GET STAFF
+
         public async Task<IActionResult> Index()
-        { 
+        {
             var client = _httpClientFactory.CreateClient();  // İstemci oluşturduk
             var responseMessage = await client.GetAsync("http://localhost:57222/api/Staff"); // İstekte bulunduğum adres
             if (responseMessage.IsSuccessStatusCode) // başarılı durum kodu dönerse
@@ -30,9 +34,14 @@ namespace HotelProject.WebUI.Controllers
             }
             return View();
         }
-        
+
+        #endregion
+
+
+        #region ADD STAFF
+
         [HttpGet]
-        public IActionResult AddStaff() 
+        public IActionResult AddStaff()
         {
             return View();
         }
@@ -41,12 +50,18 @@ namespace HotelProject.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(model); // Modeli json formatına dönüştürüyoruz.
-            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json"); // Bu satır, jsonData dizesini UTF-8 kodlamasında bir JSON içeriği olarak temsil eden bir StringContent nesnesi oluşturur. Bu nesne, HTTP isteği mesaj gövdesi olarak kullanılabilir.
-            var responseMessage = await client.PostAsync("http://localhost:57222/api/Staff",stringContent); // 
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json"); // Bu satır, jsonData dizesini UTF-8 kodlamasında bir JSON içeriği olarak temsil eden bir StringContent nesnesi oluşturur. Bu nesne, HTTP isteği mesaj gövdesi olarak kullanılabilir.
+            var responseMessage = await client.PostAsync("http://localhost:57222/api/Staff", stringContent); // 
             if (responseMessage.IsSuccessStatusCode)
                 return RedirectToAction("Index");
             return View();
         }
+
+        #endregion
+
+
+        #region DELETE STAFF
+
         public async Task<IActionResult> DeleteStaff(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -55,6 +70,40 @@ namespace HotelProject.WebUI.Controllers
                 return RedirectToAction("Index");
             return View();
         }
+
+        #endregion
+
+
+        #region UPDATE STAFF
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateStaff(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"http://localhost:57222/api/Staff/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateStaffViewModel>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateStaff(UpdateStaffViewModel model)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(model);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("http://localhost:57222/api/Staff/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        #endregion
 
     }
 }
