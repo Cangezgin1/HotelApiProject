@@ -1,8 +1,9 @@
 Otel Rezervasyon Web Sitesi
 
-Kullanılan Teknolojiler;
-
-Asp.Net Core Api
-N Tier Architecture
-Api Consume
-MSSQL
+<h1>Kullanılan Teknolojiler;</h1>
+ <ul>
+    <li>Asp.Net Core Api</li>
+    <li>N Tier Architecture</li>
+    <li>Api Consume</li>
+    <li>MSSQL</li>
+ </ul>
