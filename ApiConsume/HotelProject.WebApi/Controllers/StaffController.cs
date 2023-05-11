@@ -31,7 +31,7 @@ namespace HotelProject.WebApi.Controllers
         public IActionResult AddStaff(Staff staff) // Staff eklemek için
         {
             _staffService.TInsert(staff);
-            return Ok();
+            return Ok(); 
         }
 
         [HttpDelete]

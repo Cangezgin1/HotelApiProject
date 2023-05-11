@@ -15,7 +15,7 @@ namespace HotelProject.WebUI.Controllers
 
         public StaffController(IHttpClientFactory httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
+            _httpClientFactory = httpClientFactory; 
         }
 
 
