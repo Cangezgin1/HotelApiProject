@@ -25,7 +25,8 @@ namespace HotelProject.WebApi.Controllers
         }
 
 
-        // Burada async ve Task kullanmamızın sebebi Asenkron programlama ile yapmak istememizdir. Asenkron programlama uzun süreli veya geçikmeli işlemlerde daha iyi performans
+
+
         [HttpGet]
         public IActionResult Index() 
         {

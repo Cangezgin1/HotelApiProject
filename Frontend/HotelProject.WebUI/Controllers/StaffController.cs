@@ -22,6 +22,8 @@ namespace HotelProject.WebUI.Controllers
 
         #region GET STAFF
 
+        // Burada async ve Task kullanmamızın sebebi Asenkron programlama ile yapmak istememizdir. Asenkron programlama uzun süreli veya geçikmeli işlemlerde daha iyi performans
+
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();  // İstemci oluşturduk
@@ -62,7 +64,7 @@ namespace HotelProject.WebUI.Controllers
 
         #region DELETE STAFF
 
-        public async Task<IActionResult> DeleteStaff(int id)
+        public async Task<IActionResult> DeleteStaff(int id) 
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync($"http://localhost:57222/api/Staff?id={id}");
