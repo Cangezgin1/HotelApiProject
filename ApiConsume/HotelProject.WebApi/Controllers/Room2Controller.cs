@@ -41,12 +41,11 @@ namespace HotelProject.WebApi.Controllers
                 return BadRequest();
 
             var values = _mapper.Map<Room>(roomAddDto);
-            var result = _roomService.TInsert(values);
-            
-            if (result == null)
-                return BadRequest();
-
-            return Ok(_mapper.Map<RoomAddDto>(result));
+            _roomService.TInsert(values);
+            return Ok();
         }
+
+
     }
 }
+          
