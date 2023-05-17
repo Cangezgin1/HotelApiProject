@@ -22,6 +22,7 @@ namespace HotelProject.WebUI.Controllers
 
 
         #region Get Service
+        
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -36,9 +37,11 @@ namespace HotelProject.WebUI.Controllers
 
             return View();
         }
+        
         #endregion
 
         #region Add Service
+        
         [HttpGet]
         public IActionResult AddService()
         {
@@ -60,6 +63,7 @@ namespace HotelProject.WebUI.Controllers
 
             return View();
         }
+        
         #endregion
 
         #region Delete Service
