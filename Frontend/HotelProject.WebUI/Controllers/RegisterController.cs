@@ -14,7 +14,7 @@ namespace HotelProject.WebUI.Controllers
         private readonly UserManager<AppUser> _userManager;
 
         public RegisterController(UserManager<AppUser> userManager)
-        {
+        { 
             _userManager = userManager;
         }
 
