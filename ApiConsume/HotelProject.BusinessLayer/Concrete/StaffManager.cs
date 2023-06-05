@@ -13,7 +13,7 @@ namespace HotelProject.BusinessLayer.Concrete
     {
         private readonly IStaffDal _staffDal;
 
-        public StaffManager(IStaffDal staffDal)
+        public StaffManager(IStaffDal staffDal) 
         {
             _staffDal = staffDal;
         }
