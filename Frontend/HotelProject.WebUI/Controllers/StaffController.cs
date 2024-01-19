@@ -18,7 +18,7 @@ namespace HotelProject.WebUI.Controllers
             _httpClientFactory = httpClientFactory; 
         }
 
-
+ 
 
         #region GET STAFF
 
