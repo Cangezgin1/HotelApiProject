@@ -29,7 +29,7 @@ namespace HotelProject.WebUI.Controllers
             if (!ModelState.IsValid)
             {
                 return View();
-            }
+            } 
             var appUser = new AppUser()
             {
                 Name = createNewUserDto.Name,
