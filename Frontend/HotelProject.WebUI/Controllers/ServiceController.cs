@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelProject.WebUI.Controllers
+namespace HotelProject.WebUI.Controllers 
 {
     public class ServiceController : Controller
     {
