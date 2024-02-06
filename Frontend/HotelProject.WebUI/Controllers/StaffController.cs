@@ -21,7 +21,7 @@ namespace HotelProject.WebUI.Controllers
  
 
         #region GET STAFF
-
+ 
         // Burada async ve Task kullanmamızın sebebi Asenkron programlama ile yapmak istememizdir. Asenkron programlama uzun süreli veya geçikmeli işlemlerde daha iyi performans
 
         public async Task<IActionResult> Index()
