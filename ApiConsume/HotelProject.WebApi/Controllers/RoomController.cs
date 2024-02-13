@@ -16,7 +16,7 @@ namespace HotelProject.WebApi.Controllers
         private readonly IRoomService _roomService;
 
         public RoomController(IRoomService RoomService)
-        {
+        { 
             _roomService = RoomService;
         }
 
